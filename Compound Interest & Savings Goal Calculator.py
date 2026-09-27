@@ -60,8 +60,6 @@ else:
     print("El estudio ha sido cancelado, que tenga buen día.")
     exit()
 
-comprobacion = input("\nDesea que imprima por pantalla los resultados todos de nuevo?, responda Si o No: ")
-
 if comprobacion == "Si":
     comprobacion = input("\n¿Posee algún inmueble de inversión?, responda Si o No: ")
     if comprobacion == "Si":
@@ -72,8 +70,7 @@ if comprobacion == "Si":
             comprobacion = input("¿Posee algún inmueble más?, responda Si o No: ")
 
         total_inmuebles = sum(activos["Inmuebles"])
+        print(f"\nEl valor total de los inmuebles es de {total_inmuebles}€")
 else:
      print("El estudio ha sido cancelado, que tenga buen día.")
      exit()
-
-print(f"\nEl valor total de los inmuebles es de {total_inmuebles}€")
