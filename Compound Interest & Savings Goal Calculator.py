@@ -1,4 +1,7 @@
 i_anuales = 0
+ahorro_mensual = 0
+interes_mensual = 0
+rendimiento_mes_1 = 0
 i_mensuales = 0
 tipo_interes = 0
 años = 0
@@ -27,14 +30,14 @@ if comprobacion == "Si":
     datos_usuario["Interés mensual"] = interes_mensual = monthly_interest(tipo_interes)
     
     # El interés del primer mes se calcula sobre el dinero AHORRADO, no sobre el sueldo.
-    datos_usuario["Rendimiento mensual"] = rendimiento_mes_1 = monthly_return
+    datos_usuario["Rendimiento mensual"] = rendimiento_mes_1 = monthly_return(ahorro_mensual,interes_mensual)
     
-    print(f"\nTu ahorro real al mes será de: {ahorro_mensual:.2f}€")
-    print(f"El primer mes su dinero generará: {rendimiento_mes_1:.2f}€ de interés.")
+    print(f"\nTu ahorro real al mes será de: {ahorro_mensual:,.2f}€")
+    print(f"El primer mes su dinero generará: {rendimiento_mes_1:,.2f}€ de interés.")
 else:
     print("El estudio ha sido cancelado, que tenga buen día")
     exit()
-
+#------------------------------------------------------------
 comprobacion = input("\nLe gustaría calcular cuánto genera su dinero al año?, responda Si o No: ")
 
 if comprobacion == "Si":
