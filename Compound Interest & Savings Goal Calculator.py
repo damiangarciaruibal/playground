@@ -8,6 +8,9 @@ saldo_acumulado = 0
 rendimiento_anual = 0
 activos ={}
 valor_inmueble = 0
+from functions import monthly_saving
+from functions import monthly_interest
+from functions import monthly_return
 
 
 comprobacion = input("Bienvenido a la calculadora de interés compuesto y de ahorros. " \
@@ -16,15 +19,15 @@ comprobacion = input("Bienvenido a la calculadora de interés compuesto y de aho
 if comprobacion == "Si":
     datos_usuario["Ingresos mensuales"] = i_mensuales = float(input("¿Cuánto dinero ganas al mes?: "))
     
-    # Le preguntamos cuánto de ese dinero realmente VA A AHORRAR.
+    # Le preguntamos cuánto de ese dinero va realmente A AHORRAR.
     datos_usuario["% Ahorro"] = porcentaje_ahorro = float(input("¿Qué porcentaje de ese dinero puedes ahorrar al mes? (ej. 10 para 10%): "))
-    datos_usuario["Ahorro mensual"] = ahorro_mensual = #i_mensuales * (porcentaje_ahorro / 100) CAMBIAR ESTO POR UNA FUNCIÓN
+    datos_usuario["Ahorro mensual"] = ahorro_mensual = monthly_saving(i_mensuales,porcentaje_ahorro)
     
     datos_usuario["Tipo de interés"] = tipo_interes = float(input("¿Cuál es el porcentaje de interés anual de la inversión? (ej. 8): "))
-    datos_usuario["Interés mensual"] = interes_mensual = (tipo_interes / 100) / 12
+    datos_usuario["Interés mensual"] = interes_mensual = monthly_interest(tipo_interes)
     
     # El interés del primer mes se calcula sobre el dinero AHORRADO, no sobre el sueldo.
-    datos_usuario["Rendimiento mensual"] = rendimiento_mes_1 = ahorro_mensual * interes_mensual
+    datos_usuario["Rendimiento mensual"] = rendimiento_mes_1 = monthly_return
     
     print(f"\nTu ahorro real al mes será de: {ahorro_mensual:.2f}€")
     print(f"El primer mes su dinero generará: {rendimiento_mes_1:.2f}€ de interés.")
@@ -74,6 +77,4 @@ if comprobacion == "Si":
         total_inmuebles = sum(activos["Inmuebles"]) #REVISA SI AÑADIR ESTO A LA VARIABLE DE LOS DATOS DEL USUARIO.
 
 print(f"\nEl valor total de los inmuebles es de {total_inmuebles}€, le gusatría seguir calculado otros activos?, responda Si o No: ")
-
-            
         
