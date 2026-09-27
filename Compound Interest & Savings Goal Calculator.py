@@ -6,15 +6,19 @@ comprobacion = ""
 datos_usuario = {}
 saldo_acumulado = 0
 rendimiento_anual = 0
+activos ={}
+valor_inmueble = 0
 
-comprobacion = input("Bienvenido a la calculadora de interés compuesto y de ahorros. A continuación elaboraremos un estudio real según los datos que nos dé, está interesado en hacer el estudio?, responda Si o No: ")
+
+comprobacion = input("Bienvenido a la calculadora de interés compuesto y de ahorros. " \
+"A continuación elaboraremos un estudio real según los datos que nos dé, está interesado en hacer el estudio?, responda Si o No: ")
 
 if comprobacion == "Si":
     datos_usuario["Ingresos mensuales"] = i_mensuales = float(input("¿Cuánto dinero ganas al mes?: "))
     
     # Le preguntamos cuánto de ese dinero realmente VA A AHORRAR.
     datos_usuario["% Ahorro"] = porcentaje_ahorro = float(input("¿Qué porcentaje de ese dinero puedes ahorrar al mes? (ej. 10 para 10%): "))
-    datos_usuario["Ahorro mensual"] = ahorro_mensual = i_mensuales * (porcentaje_ahorro / 100)
+    datos_usuario["Ahorro mensual"] = ahorro_mensual = #i_mensuales * (porcentaje_ahorro / 100) CAMBIAR ESTO POR UNA FUNCIÓN
     
     datos_usuario["Tipo de interés"] = tipo_interes = float(input("¿Cuál es el porcentaje de interés anual de la inversión? (ej. 8): "))
     datos_usuario["Interés mensual"] = interes_mensual = (tipo_interes / 100) / 12
@@ -28,7 +32,7 @@ else:
     print("El estudio ha sido cancelado, que tenga buen día")
     exit()
 
-comprobacion = input("\nLe gustaría calcular cuánto genera su dinero al año?, ponga Si o No: ")
+comprobacion = input("\nLe gustaría calcular cuánto genera su dinero al año?, responda Si o No: ")
 
 if comprobacion == "Si":
     #Le preguntamos si según los DATOS que subimos, le interesa hacer el RENDIMIENTO ANUAL.
@@ -56,3 +60,20 @@ if comprobacion == "Si":
         print(f"-> {clave}: {valor:.2f}€")
 else:
     print("Gracias por utilizar la calculadora, vuelva pronto")
+#Análisis de activos
+comprobacion = input("\nLe gustaría calcular cuánto valen sus activos si tiene?, responda Si o No: ")
+
+if comprobacion == "Si":
+    comprobacion = input("\n¿Posee algún inmueble de inversión?, responda Si o No: ")
+    if comprobacion == "Si":
+        activos["Inmuebles"] = []
+        while comprobacion == "Si":
+            valor_inmueble = input("\n¿Podría poner el valor monetario del inmueble?: ")
+            activos["Inmuebles"].append(valor_inmueble)
+            comprobacion = input("¿Posee algún inmueble más?, repsonda Si o No: ")
+        total_inmuebles = sum(activos["Inmuebles"]) #REVISA SI AÑADIR ESTO A LA VARIABLE DE LOS DATOS DEL USUARIO.
+
+print(f"\nEl valor total de los inmuebles es de {total_inmuebles}€, le gusatría seguir calculado otros activos?, responda Si o No: ")
+
+            
+        
