@@ -1,10 +1,8 @@
-i_anuales = 0
 ahorro_mensual = 0
 interes_mensual = 0
 rendimiento_mes_1 = 0
 i_mensuales = 0
 tipo_interes = 0
-años = 0
 comprobacion = ""
 datos_usuario = {}
 saldo_acumulado = 0
