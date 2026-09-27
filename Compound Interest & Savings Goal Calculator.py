@@ -11,6 +11,7 @@ saldo_acumulado = 0
 rendimiento_anual = 0
 activos ={}
 valor_inmueble = 0
+
 from functions import monthly_saving
 from functions import monthly_interest
 from functions import monthly_return
@@ -18,6 +19,7 @@ from functions import monthly_return
 
 comprobacion = input("Bienvenido a la calculadora de interés compuesto y de ahorros. " \
 "A continuación elaboraremos un estudio real según los datos que nos dé, está interesado en hacer el estudio?, responda Si o No: ")
+#Se elabora un estudio del ahorro real del mes y el rendimiento mensual de la inversión que hará el usuario.
 
 if comprobacion == "Si":
     datos_usuario["Ingresos mensuales"] = i_mensuales = float(input("¿Cuánto dinero ganas al mes?: "))
@@ -37,12 +39,13 @@ if comprobacion == "Si":
 else:
     print("El estudio ha sido cancelado, que tenga buen día")
     exit()
-#------------------------------------------------------------
+
 comprobacion = input("\nLe gustaría calcular cuánto genera su dinero al año?, responda Si o No: ")
+#Se analiza el efecto compuesto y el rendimiento real que le da al usuario su dinero en un período de un año.
 
 if comprobacion == "Si":
     #Le preguntamos si según los DATOS que subimos, le interesa hacer el RENDIMIENTO ANUAL.
-    comprobacion = input(f"Según los datos que ha puesto, y sabiendo que el rendimiento mensual es de {rendimiento_mes_1:.2f}€, podremos calcularlo. Desea que utilicemos los datos antriores?, responda Si o No: ")
+    comprobacion = input(f"Según los datos que ha puesto, y sabiendo que el rendimiento mensual es de {rendimiento_mes_1:.2f}€, podremos calcularlo. Desea que utilicemos los datos anteriores?, responda Si o No: ")
     if comprobacion == "Si":
         for mes in range(1, 13):
             saldo_acumulado += datos_usuario["Ahorro mensual"]
@@ -56,18 +59,10 @@ if comprobacion == "Si":
         print(f"El primer año su dinero habrá acumulado un total de: {saldo_acumulado:.2f}€.")
         print(f"De los cuales, la ganancia real por interés compuesto es de: {rendimiento_anual:.2f}€.")
 else:
-    print("El análisis ha terminado, que tenga buen día.")
+    print("El estudio ha sido cancelado, que tenga buen día.")
     exit()
 
 comprobacion = input("\nDesea que imprima por pantalla los resultados todos de nuevo?, responda Si o No: ")
-
-if comprobacion == "Si":
-    for clave, valor in datos_usuario.items():
-        print(f"-> {clave}: {valor:.2f}€")
-else:
-    print("Gracias por utilizar la calculadora, vuelva pronto")
-#Análisis de activos
-comprobacion = input("\nLe gustaría calcular cuánto valen sus activos si tiene?, responda Si o No: ")
 
 if comprobacion == "Si":
     comprobacion = input("\n¿Posee algún inmueble de inversión?, responda Si o No: ")
@@ -76,8 +71,11 @@ if comprobacion == "Si":
         while comprobacion == "Si":
             valor_inmueble = input("\n¿Podría poner el valor monetario del inmueble?: ")
             activos["Inmuebles"].append(valor_inmueble)
-            comprobacion = input("¿Posee algún inmueble más?, repsonda Si o No: ")
-        total_inmuebles = sum(activos["Inmuebles"]) #REVISA SI AÑADIR ESTO A LA VARIABLE DE LOS DATOS DEL USUARIO.
+            comprobacion = input("¿Posee algún inmueble más?, responda Si o No: ")
 
-print(f"\nEl valor total de los inmuebles es de {total_inmuebles}€, le gusatría seguir calculado otros activos?, responda Si o No: ")
-        
+        total_inmuebles = sum(activos["Inmuebles"])
+else:
+     print("El estudio ha sido cancelado, que tenga buen día.")
+     exit()
+
+print(f"\nEl valor total de los inmuebles es de {total_inmuebles}€")
